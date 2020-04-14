@@ -1,0 +1,20 @@
+class Solution(object):
+#字串解決法
+#首先將正負號提出
+#透過str[::-1]間隔取數的方式將字串倒反
+#透過[::-1]從起始位置0間隔-1的方式抓值EX:[1,2,3]->[3,2,1]
+    def reverse(self,x):
+        up=2**31-1
+        down=2**31*-1
+        isNeg=x<0
+        if isNeg:
+            x=x*-1
+        xstr=str(x)
+        xstr=xstr[::-1]
+        x=int(xstr)
+        if isNeg:
+            x=x*-1
+        if x>up or x <down:
+            return 0
+        return x
+    
