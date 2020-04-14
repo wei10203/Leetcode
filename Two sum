@@ -2,7 +2,9 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         if nums is None or len(nums) == 0:
             return []
-        
+        #將List中的數字依序存入table
+        #透過將target與抓出的number相減看看有沒有在table中
+        #若有就將table中的數字位置和list的位置抓出即為答案
         indices_of_values = {}
         for index, number in enumerate(nums):
             if target - number in indices_of_values:
