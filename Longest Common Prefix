@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestCommonPrefix(self,strs):
+        if strs:
+            minL=len(min(strs,key=len))#利用min找出strs中最短單字
+            print(minL)
+        else: 
+            return ""
+        for i in range(minL):#利用兩層迴圈第一層為最短單字長度 第二層跑遍所有strs中單字
+            for j in range(1,len(strs)):
+                print(strs[j][i],strs[0][i])
+                if strs[j][i]!=strs[0][i]:#利用第一個單字跟後面的一一做比較，若不同則回傳到目前為止相同的
+                    print(strs[0][:i])
+                    return strs[0][:i]
+        if minL:
+            return strs[0][:minL]
+        else:
+            return ""
+        
