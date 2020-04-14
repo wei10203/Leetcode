@@ -1,0 +1,22 @@
+class Solution(object):
+    def romanToInt(self,s):
+        table={
+            "I": 1,
+         "V": 5,
+         "X": 10,
+          "L": 50,
+          "C": 100,
+            "D": 500,
+           "M": 1000
+        }
+        num=0
+        rs=s[::-1] #將string倒反，目的是從右到左讀羅馬字
+        prev=0
+        print(rs) 
+        for char in rs:
+            if table[char]>=prev: #如果目前的值比上一個值還大就是+起來 EX: LVIII讀起來是 I->I->I->V->L 都是後面比前面大所以都是+
+                num+=table[char]
+            else:
+                num-=table[char] #反之如果目前的值比上一個值還小就是-去 例如:IV會這樣讀V->I就會-去I ，同理 IX會變 X->I就會減去I
+            prev=table[char]
+        return num
