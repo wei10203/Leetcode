@@ -1,0 +1,12 @@
+class Solution(object):
+#刪除list指定數字並算出剩餘長度
+    def removeElement(self, nums, val):
+        n=0
+        while(n<len(nums)): #全部跑一遍
+            if(nums[n]==val):
+                del nums[n] #抓到就刪掉
+            else: 
+                n=n+1      #不是就+1
+        return n
+        
+        
