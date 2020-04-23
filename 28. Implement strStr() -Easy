@@ -1,0 +1,19 @@
+class Solution(object):
+#找出haystack中與needle完全一樣的句子的第一個元素位置
+    def strStr(self,haystack, needle):
+        if needle=="":
+            return 0
+        for i in range(len(haystack)-len(needle)+1): #兩個str最長的相似情況，+1是防止有-1或0長度的情況
+            for j in range(len(needle)):
+                if haystack[i+j]!=needle[j]:#在i位置找到後，往後找j個needle長，若沒有則break return -1
+                    break 
+                if j ==len(needle)-1: #如果找到最後都一樣 則回傳一開始找到的位置i
+                    return i
+        return -1
+"""
+print(strStr("",""))#空0
+print(strStr("","a"))#沒找到-1
+print(strStr("a","a"))#第一個位置0
+print(strStr("hello","ll"))第三個位置 2
+print(strStr("aaaaa","bba"))沒找到-1
+"""
