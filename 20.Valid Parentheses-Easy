@@ -1,0 +1,17 @@
+class Solution(object):
+#題目為判斷括號是否合理
+#利用stack先進後出規則
+#將括號存入字典
+    def isValid(self, s):
+        stack=[]
+        pair={"(":")","[":"]","{":"}"}
+        for i in s:
+            if i in pair:#將左括號append入stack中
+                stack.append(i)
+            elif len(stack)<=0:#stack中沒有左括號代表不可能成對
+                return False
+            elif i in pair.values() and i != pair[stack.pop()]:#如果出現右括號，並且右括號對應到字典中的左括號配對失敗則代表不成對
+                return False
+        if stack==[]:#迴圈跑完代表全部成對，或為空回傳True
+            return True
+        
