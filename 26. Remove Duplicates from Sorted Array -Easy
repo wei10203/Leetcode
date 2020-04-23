@@ -1,0 +1,14 @@
+class Solution(object):
+#將sort array中重複的數字刪除並算出共有幾種數字
+    def removeDuplicates(self, nums):
+        n=1               #將n設為1預防全部一樣的數字
+        while(n<len(nums)): 從第一個開始跑到結束
+            if(nums[n]==nums[n-1]): #如果後面跟前面一樣則刪除後面的
+                del nums[n]
+            else:
+                n=n+1              #不一樣n就+1
+        return n
+   #範例
+   #[1,1,2] 刪除第1位的1
+   #[1,2]   沒重複n+1
+   #return 2
