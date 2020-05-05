@@ -1,0 +1,95 @@
+def select_sort(item):
+    list1=item
+    for i in range(len(item)-1):  
+        minl=i
+        for j in range(i,len(item)):
+            if list1[minl]>list1[j]:
+                minl=j
+        list1[i],list1[minl]=list1[minl],list1[i]
+    return list1
+
+def bubble_sort(item):
+    items=item
+    for i in range(len(item)-1):
+        for j in range(0,len(items)-i-1):
+            if items[j]>items[j+1]:
+                items[j+1],items[j]=items[j],items[j+1]
+    return items
+
+def merge_sort(item):
+    if len(item)<2:
+        return item
+    else:
+        mid=len(item)//2
+        left=merge_sort(item[:mid])
+        right=merge_sort(item[mid:])
+        merge(left,right)
+    
+    return(merge(left,right))
+
+
+
+
+
+def merge(item1,item2):
+    items=[]
+    index1,index2=0,0
+    while index1<len(item1) and index2<len(item2) :
+        if item1[index1]<=item2[index2]:
+            items.append(item1[index1])
+            index1+=1
+        else:
+            items.append(item2[index2])
+            index2+=1        
+        
+    items+=item1[index1:]
+    items+=item2[index2:]
+    return items
+
+def seq_search(items,key):
+    li=[]
+    bo=False
+    for index ,item in enumerate(items):
+        if item==key :
+            li.append(index)
+            bo=True      
+    return li if bo  else -1
+def bin_search(items,key):
+    select_sort(items)
+    print(items)
+    first,end=0,len(items)-1
+    while first<=end:
+        mid =(first+end)//2
+        if key>items[mid]:
+            first=mid+1
+        elif key==items[mid]:
+            return mid
+        else:
+            end=mid-1
+    return -1
+
+                
+
+        
+
+
+
+def main():
+   # print(select_sort([1,2,4,1,5,6,7,8,3,4,5,6,7,8,2,3,3,5,7,5,3]))
+   # print(select_sort([5,4,3,2,1]))
+   # print(select_sort([1,2,3,4,5]))
+  # print(bubble_sort([1,2,4,1,5,6,7,8,3,4,5,6,7,8,2,3,3,5,7,5,3]))
+   # print(bubble_sort([5,4,3,2,1]))
+   # print(bubble_sort([1,2,3,4,5]))
+   # print(merge_sort([1,2,4,1,5,6,7,8,3,4,5,6,7,8,2,3,3,5,7,5,3]))
+   # print(merge_sort([5,4,3,2,1]))
+   # print(merge_sort([1,2,3,4,5]))
+ #   print(seq_search([1,2,4,1,5,6,7,8,3,4,5,6,7,8,2,3,3,5,7,5,3],5))
+  #  print(seq_search([5,4,3,2,1],2))
+  #  print(seq_search([1,2,3,4,5],6))
+    print(bin_search([1,2,4,1,5,6,7,8,3,4,5,6,7,8,2,3,3,5,7,5,3],5))
+    print(bin_search([5,4,3,2,1],2))
+    print(bin_search([1,2,3,4,5],6))
+    
+if __name__ == "__main__":
+    main()
